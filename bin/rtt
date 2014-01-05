@@ -1,0 +1,14 @@
+#!/bin/sh
+
+TARGET=/system/bin/tcmd
+TCMD_PID=`adb shell ps | grep $TARGET | cut -c 9-15` 
+if [ -n "$TCMD_PID" ]; then
+  echo running tcmd pid is: $TCMD_PID
+  echo killing running tcmd...
+  adb shell stop tcmd
+fi
+
+echo restarting tcmd...
+adb shell start tcmd
+adb logcat 'TCMD:V *:S'
+

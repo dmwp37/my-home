@@ -1,0 +1,44 @@
+[core]
+    pager = cat
+    ignoreCygwinFSTricks = true
+#    gitproxy = http-proxy-gw for kernel.org 
+#    gitproxy = http-proxy-gw for uncrustify.git.sourceforge.net
+    excludesfile =  ~/.gitignore_global
+[gui]
+    recentrepo = D:/Data/project/common_tcmd_local
+    fontui = -family \"MS Sans Serif\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+[user]
+    name = Xu-Dong Huang
+    email = xudongh@juniper.net
+[color]
+    ui = auto
+[alias]
+    lsb = branch -a
+    br = branch
+    lg = log --pretty=oneline -30
+    df = diff --no-ext-diff
+    dfc = diff --no-ext-diff --cached
+[http]
+#    proxy = http://wwwgate0-ch.mot.com:1080
+[diff]
+    external = ~/bin/diff-wrapper.sh
+    renames = true
+[merge]
+    tool = bdiff
+[mergetool "bdiff"]
+    cmd = ~/bin/bdiff `cygpath -wp $PWD/$LOCAL` `cygpath -wp $PWD/$REMOTE` `cygpath -wp $PWD/$BASE` `cygpath -wp $PWD/$MERGED` /title1="local" /title2="remote" /title3="base"
+    trustExitCode = false
+    keepBackup = false
+
+#push changes to gerrit.pcs.mot.com
+[url "ssh://gerrit.pcs.mot.com:29418/"]
+    pushinsteadOf=ssh://gerrit.pcs.mot.com:29418/
+    pushinsteadOf=ssh://dmwp37@gerrit.pcs.mot.com:29418/
+    pushinsteadOf=ssh://gerrit.pcs.mot.com/
+    pushinsteadof=ssh://zch68rep01.ap.mot.com/proj/repo01/gerrit/
+    pushinsteadof=ssh://zch68lnxdroid13.ap.mot.com/proj/repo01/gerrit/
+
+[url "ssh://zch68rep01.ap.mot.com:29418/"]
+    insteadOf=ssh://dmwp37@gerrit.pcs.mot.com:29418/
+    insteadOf=ssh://gerrit.pcs.mot.com:29418/
+    insteadOf=ssh://zch68rep01.ap.mot.com/proj/repo01/gerrit/

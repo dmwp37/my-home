@@ -1,0 +1,43 @@
+#!/bin/sh
+
+TARGET=/system/bin/tcmd
+TCMD=/d/Temp/tcmd
+#TARGET1=/system/bin/tcmdhelp
+#TCMDHELP=/d/Temp/tcmdhelp
+
+if [ ! -e $TCMD ]; then
+  echo $TCMD not found!
+  exit
+fi
+
+echo finding devices...
+#adb kill-server
+#adb start-server > /dev/null
+DEVICE=`adb devices | grep "device"`
+if [ -n "$DEVICE" ]; then
+  echo $DEVICE
+else
+  echo no device attached!
+  exit
+fi
+
+TCMD_PID=`adb shell ps | grep $TARGET | cut -c 9-15` 
+if [ -n "$TCMD_PID" ]; then
+  echo running tcmd pid is: $TCMD_PID
+  echo killing running tcmd...
+  adb shell stop tcmd
+#  adb shell stop tcmdhelp
+fi
+
+adb remount
+echo uploading tcmd...
+adb push `cygpath -wp $TCMD` $TARGET
+#adb push `cygpath -wp $TCMDHELP` $TARGET1
+adb shell chmod 755 $TARGET
+#adb shell chmod 755 $TARGET1
+echo starting new tcmd...
+adb shell start tcmd
+sleep 1
+adb shell tcmd_send 009e00000000
+#adb logcat -c
+adb logcat 'TCMD:V *:S' 

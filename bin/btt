@@ -1,0 +1,36 @@
+#!/bin/sh
+
+TARGET=/opl/bin/tcmd
+TCMD=/d/Temp/tcmd
+
+if [ ! -e $TCMD ]; then
+  echo $TCMD not found!
+  exit
+fi
+
+echo finding devices...
+adb kill-server
+adb start-server > /dev/null
+DEVICE=`adb devices | grep "emulator"`
+if [ -n "$DEVICE" ]; then
+  echo $DEVICE
+else
+  echo no device attached!
+  exit
+fi
+
+TCMD_PID=`adb shell ps | grep $TARGET | cut -c 9-15` 
+if [ -n "$TCMD_PID" ]; then
+  echo running tcmd pid is: $TCMD_PID
+  echo killing running tcmd...
+  adb shell stop tcmd
+fi
+
+adb remount
+echo uploading tcmd...
+adb push `cygpath -wp $TCMD` $TARGET
+adb shell chmod 755 $TARGET
+echo starting new tcmd...
+adb shell start tcmd
+adb logcat 'TCMD:V *:S'
+

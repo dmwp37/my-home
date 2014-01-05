@@ -1,0 +1,57 @@
+#!/bin/sh
+
+TARGET=/system/bin
+TCMD=/d/Temp/tcmd
+BATCH=/d/Temp/batch
+
+if [ ! -e $TCMD ]; then
+  echo $TCMD not found!
+  exit
+fi
+
+if [ ! -e $BATCH ]; then
+  echo $BATCH not found!
+  exit
+fi
+
+echo finding devices...
+adb kill-server
+adb start-server > /dev/null
+DEVICE=`adb devices | grep "emulator"`
+if [ -n "$DEVICE" ]; then
+  echo $DEVICE
+else
+  echo no device attached!
+  exit
+fi
+
+TCMD_PID=`adb shell ps | grep $TARGET/tcmd | cut -c 9-15` 
+if [ -n "$TCMD_PID" ]; then
+  echo running tcmd pid is: $TCMD_PID
+  echo killing running tcmd...
+  adb shell stop tcmd
+fi
+
+
+BATCH_PID=`adb shell ps | grep $TARGET/batch | cut -c 9-15`
+if [ -n "$BATCH_PID" ]; then
+  echo running tcmd pid is: $BATCH_PID
+  echo killing running batch...
+  adb shell kill -9 $BATCH_PID
+fi
+
+adb remount
+
+echo uploading tcmd...
+adb push `cygpath -wp $TCMD` $TARGET/tcmd
+adb shell chmod 755 $TARGET/tcmd
+
+echo uploading batch...
+adb push `cygpath -wp $BATCH` $TARGET/batch
+adb shell chmod 755 $TARGET/batch
+
+echo starting new tcmd...
+adb shell start tcmd
+
+adb logcat 'TCMD:V *:S BATCH:V *:S'
+
