@@ -1,3 +1,6 @@
 [submodule ".vim"]
 	path = .vim
 	url = git@github.com:dmwp37/dmwp37-vim-config.git
+[submodule ".shell"]
+	path = .shell
+	url = git@github.com:dmwp37/zsh-env.git
