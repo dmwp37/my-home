@@ -6,16 +6,15 @@
     excludesfile =  ~/.gitignore_global
 [gui]
     recentrepo = D:/Data/project/common_tcmd_local
-    fontui = -family \"MS Sans Serif\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-[user]
-    name = Xu-Dong Huang
+    fontui = -family \"MS Sans Serif\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0 [user]
+    name = Xudong Huang
     email = xudongh@juniper.net
 [color]
     ui = auto
 [alias]
     lsb = branch -a
     br = branch
-    lg = log --pretty=oneline -30
+    lg = log --pretty=oneline --abbrev-commit -18
     df = diff --no-ext-diff
     dfc = diff --no-ext-diff --cached
 [http]
@@ -42,3 +41,6 @@
     insteadOf=ssh://dmwp37@gerrit.pcs.mot.com:29418/
     insteadOf=ssh://gerrit.pcs.mot.com:29418/
     insteadOf=ssh://zch68rep01.ap.mot.com/proj/repo01/gerrit/
+[user]
+	name = Xudong Huang
+	email = xudongh@juniper.net

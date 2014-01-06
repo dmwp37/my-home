@@ -1,0 +1,14 @@
+#!/bin/bash
+args=""
+for file in $@
+do
+  if [ -s $file ]; then
+    args=$args" "`cygpath -wp $file`
+  else
+    #keep it
+    args=$args" "$file
+  fi
+done
+
+gvim.bat $args
+
