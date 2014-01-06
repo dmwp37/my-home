@@ -1,0 +1,3 @@
+[submodule ".vim"]
+	path = .vim
+	url = git@github.com:dmwp37/dmwp37-vim-config.git
