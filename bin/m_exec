@@ -1,0 +1,25 @@
+#!/bin/sh
+
+uname=`uname -o`
+
+cmd=$1
+
+shift
+
+if [ $uname = "Cygwin" ]; then
+  args=""
+  for file in $@
+  do
+    if [ -s $file ]; then
+      args=$args" "`cygpath -wp $file`
+    else
+      #keep it
+      args=$args" "$file
+    fi
+  done
+  HOME=""
+  $cmd $args
+else
+  $cmd $@
+fi
+

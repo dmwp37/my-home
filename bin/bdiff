@@ -1,1 +1,7 @@
-/d/Tools/BeyondCompare/BCompare.exe
+#!/bin/sh
+uname=`uname -o`
+if [ $uname = "Cygwin" ]; then
+  ~/bin/m_exec /d/Tools/BeyondCompare/BCompare.exe $@
+else
+  meld $@
+fi

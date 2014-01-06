@@ -1,1 +1,10 @@
-/cygdrive/c/Program Files (x86)/Git/cmd/gitk.cmd
+#!/bin/sh
+
+uname=`uname -o`
+
+if [ $uname = "Cygwin" ]; then
+  ~/bin/m_exec gitk.cmd $@
+else
+  /usr/bin/gitk $@
+fi
+

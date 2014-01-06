@@ -1,14 +1,10 @@
-#!/bin/bash
-args=""
-for file in $@
-do
-  if [ -s $file ]; then
-    args=$args" "`cygpath -wp $file`
-  else
-    #keep it
-    args=$args" "$file
-  fi
-done
+#!/bin/sh
 
-gvim.bat $args
+uname=`uname -o`
+
+if [ $uname = "Cygwin" ]; then
+  ~/bin/m_exec gvim.bat $@
+else
+  /usr/bin/gvim $@
+fi
 

@@ -1,14 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 for file in $@
 do
   if [ -s $file ]; then
     echo format $file ...
-    uncrustify -c `cygpath -wp ~/bin/std.cfg` --no-backup `cygpath -wp $file`
+    ~/bin/m_exec uncrustify -c ~/bin/std.cfg --no-backup $file
     chmod 644 $file
-#    chown dmwp37 $file
-#    dos2unix -q $file
   else
     echo can not format $file
   fi
 done
-
