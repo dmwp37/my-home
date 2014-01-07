@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 #for file in $@
 #do
 #  if [ ! -z "$file" ]; then
 #    scp $file dmwp37-01:tmp/
 #  fi
 #done
-scp $@ dmwp37-gx1:tmp/
+scp $@ stargo:tmp/
