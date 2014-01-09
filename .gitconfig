@@ -25,7 +25,7 @@
 [merge]
     tool = bdiff
 [mergetool "bdiff"]
-    cmd = ~/bin/bdiff $PWD/$LOCAL PWD/$REMOTE PWD/$BASE $PWD/$MERGED /title1="local" /title2="remote" /title3="base"
+    cmd = ~/bin/bdiff $LOCAL $REMOTE $BASE $MERGED /title1="local" /title2="remote" /title3="base"
     trustExitCode = false
     keepBackup = false
 
