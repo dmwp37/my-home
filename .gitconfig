@@ -24,9 +24,14 @@
     renames = true
 [merge]
     tool = bdiff
+
+[mergetool]
+    keepBackup = false
+
 [mergetool "bdiff"]
-    cmd = ~/bin/bdiff $LOCAL $REMOTE $BASE $MERGED /title1="local" /title2="remote" /title3="base"
-    trustExitCode = false
+    cmd = ~/bin/bdiff "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$BASE" "$PWD/$MERGED" \
+          /title1="local" /title2="remote" /title3="base"
+    trustExitCode = true
     keepBackup = false
 
 #push changes to gerrit.pcs.mot.com
