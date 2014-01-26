@@ -1,1 +1,1 @@
-git diff-index --name-only HEAD | xargs -n 1 ~/bin/format
+git ls-files -m | xargs -n1 ~/bin/format
