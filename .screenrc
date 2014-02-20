@@ -1,0 +1,30 @@
+# don't show the startup_message
+startup_message off
+# term color settings
+term xterm
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# use current bg color for erased chars
+defbce on
+
+# Fix for residual editor text
+altscreen on
+
+# Use X scrolling mechanism
+termcapinfo xterm* ti@:te@
+
+# statusbar
+#hardstatus off
+#hardstatus alwayslastline
+#hardstatus string '%{= kG}[ %{G}%H %{g} ][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
+
+# window tile
+#backtick 1 5 5 true
+#termcapinfo rxvt* 'hs:ts=\E]2;:fs=\007:ds=\E]2;\007'
+#hardstatus string "screen (%n: %t)"
+#caption string "%{= kw}%Y-%m-%d;%c %{= kw}%-Lw%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+Lw%1`"
+#caption always
+
+
