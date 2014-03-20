@@ -1,1 +1,1 @@
-git ls-files -m | xargs -n1 ~/bin/format
+git ls-files -m | grep '.*\.\(c\|h\|cpp\)$' | xargs -n1 ~/bin/format
