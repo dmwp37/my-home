@@ -1,8 +1,9 @@
 #!/bin/sh
-#for file in $@
-#do
-#  if [ ! -z "$file" ]; then
-#    scp $file dmwp37-01:tmp/
-#  fi
-#done
-scp $@ stargo:tmp/
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  REMOTE=$(echo $SSH_CONNECTION | cut -f 1 -d ' ')
+  exec scp $@ $REMOTE:/tmp
+else
+  echo this is not a ssh login!
+  exit 1
+fi
+
