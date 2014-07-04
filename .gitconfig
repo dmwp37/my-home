@@ -12,6 +12,8 @@
 [color]
     ui = auto
 [alias]
+    st = status
+    co = checkout
     lsb = branch -a
     br = branch
     lg = log --pretty=oneline --abbrev-commit -18
