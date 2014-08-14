@@ -36,18 +36,17 @@
     trustExitCode = true
     keepBackup = false
 
-#push changes to gerrit.pcs.mot.com
-[url "ssh://gerrit.pcs.mot.com:29418/"]
-    pushinsteadOf=ssh://gerrit.pcs.mot.com:29418/
-    pushinsteadOf=ssh://dmwp37@gerrit.pcs.mot.com:29418/
-    pushinsteadOf=ssh://gerrit.pcs.mot.com/
-    pushinsteadof=ssh://zch68rep01.ap.mot.com/proj/repo01/gerrit/
-    pushinsteadof=ssh://zch68lnxdroid13.ap.mot.com/proj/repo01/gerrit/
+#push changes to gerrit
+[url "ssh://cnrd-diag-gerrit.jnpr.net:29418/"]
+    pushinsteadOf=ssh://git@ssd-git-03.juniper.net/diag/
+    pushinsteadOf=ssh://git@ssd-git-03.juniper.net:diag/
+    pushinsteadOf=git@ssd-git-03.juniper.net/diag/
+    pushinsteadOf=git@ssd-git-03.juniper.net:diag/
+    insteadOf=ssh://git@ssd-git-03.juniper.net/diag/
+    insteadOf=ssh://git@ssd-git-03.juniper.net:diag/
+    insteadOf=git@ssd-git-03.juniper.net/diag/
+    insteadOf=git@ssd-git-03.juniper.net:diag/
 
-[url "ssh://zch68rep01.ap.mot.com:29418/"]
-    insteadOf=ssh://dmwp37@gerrit.pcs.mot.com:29418/
-    insteadOf=ssh://gerrit.pcs.mot.com:29418/
-    insteadOf=ssh://zch68rep01.ap.mot.com/proj/repo01/gerrit/
 [user]
 	name = Xudong Huang
 	email = xudongh@juniper.net
