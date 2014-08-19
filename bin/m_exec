@@ -10,7 +10,7 @@ if [ $uname = "Cygwin" ]; then
   args=""
   for file in $@
   do
-    if [ -s $file ]; then
+    if [[ -s $file || -d $file ]]; then
       args=$args" "`cygpath -wp $file`
     else
       #keep it
@@ -18,8 +18,8 @@ if [ $uname = "Cygwin" ]; then
     fi
   done
   HOME=""
-  $cmd $args
+  exec $cmd $args
 else
-  $cmd $@
+  exec $cmd $@
 fi
 

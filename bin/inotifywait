@@ -1,0 +1,8 @@
+#!/bin/sh
+uname=`uname -o`
+if [ $uname = "Cygwin"  ]; then
+    ~/bin/m_exec ~/bin/inotifywait-win.exe $@
+else
+    /usr/bin/inotifywait $@
+fi
+
