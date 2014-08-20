@@ -25,7 +25,7 @@ fi
 
 ## WATCH_EXCLUDE Git and temporary files from PHPstorm from watching.
 if [ -z "$WATCH_EXCLUDE" ]; then
-  WATCH_EXCLUDE='(\.git|___jb_)'
+  WATCH_EXCLUDE='(\.git|out|\.repo)'
 fi
 
 ## Whether to enable verbosity. If enabled, change events are output.
@@ -70,7 +70,8 @@ inotifywait -m -q -r --exclude $WATCH_EXCLUDE --format '%w/%f--%e' $WATCH_DIR | 
   while read -r FILE
   do
     if [ $WATCH_VERBOSE -ne 0 ]; then
-      echo [CHANGE] `cygpath $FILE`
+      #echo [CHANGE] `cygpath $FILE`
+      echo [CHANGE] $FILE
     fi
 
     ## Clear $PID if the last command has finished.

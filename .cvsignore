@@ -1,4 +1,5 @@
 .git/
+.repo/
 # Compiled source #  
 ###################  
 *.com  

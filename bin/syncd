@@ -1,0 +1,18 @@
+#!/bin/bash
+if [ $# != 2 ]; then
+    echo "Usage: $0 <src-dir> <dst-dir>"
+    exit 1
+fi
+
+WATCH_DIR=$1
+
+if [ ! -d $WATCH_DIR ]; then
+    echo "can't open dir: $WATCH_DIR"
+    exit 1
+fi
+
+export WATCH_DIR
+
+COMMAND="rsync -Caulrv --delete --out-format='[%t]--%n'"
+$COMMAND $@ || exit 1
+exec watch.sh $COMMAND $@
