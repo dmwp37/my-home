@@ -3,7 +3,7 @@ for file in $@
 do
   if [ -s $file ]; then
     echo clean $file ...
-    sed -e 's#\t#        #g; s# \+$##' -i $file
+    sed -e 's#\t#    #g; s# \+$##' -i $file
 #    chmod 644 $file
     dos2unix -q $file
   else

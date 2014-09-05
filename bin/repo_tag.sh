@@ -23,15 +23,15 @@ tag_create()
     #push the tags to remote
     exec_cmd "repo forall -c git push diag $1"
     #edit .repo/manifest.xml we can't use exec_cmd since bash can't handle quote properly
-    sed -e 's#revision="\([^"]*\)"#revision="refs/tags/'$1'"#g' -i .repo/manifest.xml --follow-symlinks || { echo "failed to modify manifest"; exit 1; }
+    #sed -e 's#revision="\([^"]*\)"#revision="refs/tags/'$1'"#g' -i .repo/manifest.xml --follow-symlinks || { echo "failed to modify manifest"; exit 1; }
     #checkout the manifest as detached mode and commit
-    exec_cmd "pushd .repo/manifests"
-    exec_cmd "git checkout --detach"
-    exec_cmd "git commit -a -m \"tag $1\""
-    exec_cmd "git tag -a $1 -m \"version $1\""
-    exec_cmd "git push origin $1"
-    exec_cmd "git checkout default"
-    exec_cmd "popd"
+    #exec_cmd "pushd .repo/manifests"
+    #exec_cmd "git checkout --detach"
+    #exec_cmd "git commit -a -m \"tag $1\""
+    #exec_cmd "git tag -a $1 -m \"version $1\""
+    #exec_cmd "git push origin $1"
+    #exec_cmd "git checkout default"
+    #exec_cmd "popd"
 
     echo tag $1 created successfully
 }
@@ -45,11 +45,11 @@ tag_delete()
     #delete the tag from remote
     exec_cmd "repo forall -c git push diag :$1"
     #detete manifest tag
-    exec_cmd "pushd .repo/manifests"
-    exec_cmd "git tag -d $1"
-    exec_cmd "git push origin :$1"
-    exec_cmd "git gc"
-    exec_cmd "popd"
+    #exec_cmd "pushd .repo/manifests"
+    #exec_cmd "git tag -d $1"
+    #exec_cmd "git push origin :$1"
+    #exec_cmd "git gc"
+    #exec_cmd "popd"
 
     echo tag $1 deleted successfully
 }
