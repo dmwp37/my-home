@@ -21,7 +21,7 @@ tag_create()
     #tag all the project
     exec_cmd "repo forall -c git tag -a $1 -m \"version $1\""
     #push the tags to remote
-    exec_cmd "repo forall -c git push diag $1"
+    exec_cmd "repo forall -c git push diag +$1"
     #edit .repo/manifest.xml we can't use exec_cmd since bash can't handle quote properly
     #sed -e 's#revision="\([^"]*\)"#revision="refs/tags/'$1'"#g' -i .repo/manifest.xml --follow-symlinks || { echo "failed to modify manifest"; exit 1; }
     #checkout the manifest as detached mode and commit
