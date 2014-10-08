@@ -50,3 +50,5 @@
 [user]
 	name = Xudong Huang
 	email = xudongh@juniper.net
+[push]
+	default = simple
