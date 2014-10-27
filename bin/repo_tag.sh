@@ -19,7 +19,7 @@ tag_create()
     #first sync all git to manifest head
     exec_cmd "repo sync -l"
     #tag all the project
-    exec_cmd "repo forall -c git tag -a $1 -m \"version $1\""
+    exec_cmd "repo forall -c git tag -f -a $1 -m \"version $1\""
     #push the tags to remote
     exec_cmd "repo forall -c git push diag +$1"
     #edit .repo/manifest.xml we can't use exec_cmd since bash can't handle quote properly
