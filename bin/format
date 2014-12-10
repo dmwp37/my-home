@@ -3,8 +3,13 @@ for file in $@
 do
   if [ -s $file ]; then
     echo format $file ...
-    ~/bin/m_exec uncrustify -c ~/bin/std.cfg --no-backup $file
-    chmod 644 $file
+    if [ ${file##*.} = "py" ]; then
+      autopep8 -i $file
+      chmod 755 $file
+    else
+      ~/bin/m_exec uncrustify -c ~/bin/std.cfg --no-backup $file
+      chmod 644 $file
+    fi
   else
     echo can not format $file
   fi
