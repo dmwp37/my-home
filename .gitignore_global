@@ -42,7 +42,11 @@ Thumbs.db
 #    VS project      #
 ######################  
 *.sln
+*.sdf
 *.vcproj
+*.vcxproj
+*.vcxproj.filters
+*.opensdf
 *.ncb
 *.suo
 *.user
@@ -62,4 +66,7 @@ types_c.taghl
 build
 out
 
+#   svn specific #
+######################
+.svn/
 
