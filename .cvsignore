@@ -1,4 +1,5 @@
 .git/
+.svn/
 .repo/
 # Compiled source #  
 ###################  
@@ -45,6 +46,8 @@ Thumbs.db
 ######################  
 *.sln
 *.vcproj
+*.vcxproj
+*.filters
 *.ncb
 *.suo
 *.user
