@@ -4,11 +4,12 @@
 #    gitproxy = http-proxy-gw for kernel.org 
 #    gitproxy = http-proxy-gw for uncrustify.git.sourceforge.net
     excludesfile =  ~/.gitignore_global
+    filemode = false
 [gui]
     recentrepo = D:/Data/project/common_tcmd_local
     fontui = -family \"MS Sans Serif\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0 [user]
     name = Xudong Huang
-    email = xudongh@juniper.net
+    email = huangxu008@hotmail.com
 [color]
     ui = auto
 [alias]
@@ -48,7 +49,7 @@
     insteadOf=git@ssd-git-03.juniper.net:diag/
 
 [user]
-	name = Xudong Huang
-	email = xudongh@juniper.net
+    name = Xudong Huang
+    email = huangxu008@hotmail.com
 [push]
-	default = simple
+    default = simple
