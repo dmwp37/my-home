@@ -1,10 +1,10 @@
 #!/bin/sh
 
-uname=`uname -o`
+uname=`uname -s`
 
 if [ $uname = "Cygwin" ]; then
   ~/bin/m_exec gitk.cmd $@
 else
-  /usr/bin/gitk $@
+  /usr/local/bin/gitk $@
 fi
 

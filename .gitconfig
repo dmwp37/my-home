@@ -50,6 +50,6 @@
 
 [user]
     name = Xudong Huang
-    email = huangxu008@hotmail.com
+	email = huangxu008@hotmail.com
 [push]
     default = simple

@@ -1,7 +1,7 @@
 #!/bin/sh
-uname=`uname -o`
+uname=`uname -s`
 if [ $uname = "Cygwin" ]; then
   ~/bin/m_exec /d/Tools/BeyondCompare/BCompare.exe $@
 else
-  meld $@
+  /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp $@
 fi
