@@ -3,5 +3,5 @@ uname=`uname -s`
 if [ $uname = "Cygwin" ]; then
   ~/bin/m_exec /d/Tools/BeyondCompare/BCompare.exe $@
 else
-  /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp $@
+  /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp $@ 2> /dev/null
 fi
