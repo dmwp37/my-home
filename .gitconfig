@@ -1,8 +1,9 @@
+[user]
+    name = Xudong Huang
+    email = huangxu008@hotmail.com
 [core]
     pager = cat
     ignoreCygwinFSTricks = true
-#    gitproxy = http-proxy-gw for kernel.org 
-#    gitproxy = http-proxy-gw for uncrustify.git.sourceforge.net
     excludesfile =  ~/.gitignore_global
     filemode = false
 [gui]
@@ -10,6 +11,11 @@
     fontui = -family \"MS Sans Serif\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0 [user]
     name = Xudong Huang
     email = huangxu008@hotmail.com
+[push]
+    default = simple
+[credential]
+    helper = manager
+
 [color]
     ui = auto
 [alias]
@@ -21,19 +27,28 @@
     df = diff --no-ext-diff
     dfc = diff --no-ext-diff --cached
 [http]
-#    proxy = http://wwwgate0-ch.mot.com:1080
+    proxy = http://127.0.0.1:1080
+
 [diff]
     external = ~/bin/diff-wrapper.sh
     renames = true
+    tool = p4diff
+[difftool]
+    prompt = false
+    trustExitCode = false
+[difftool "p4diff"]
+    cmd = p4merge \"$(cygpath -w \"$LOCAL\")\" \"$(cygpath -w \"$REMOTE\")\" 
+
 [merge]
+    tool = p4merge
     tool = bdiff
-
-[mergetool]
-    keepBackup = false
-
 [mergetool "bdiff"]
     cmd = ~/bin/bdiff "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$BASE" "$PWD/$MERGED" \
           /title1="local" /title2="remote" /title3="base"
+    trustExitCode = true
+    keepBackup = false
+[mergetool "p4merge"]
+    cmd = p4merge \"$(cygpath -w \"$BASE\")\" \"$(cygpath -w \"$LOCAL\")\" \"$(cygpath -w \"$REMOTE\")\" \"$(cygpath -w \"$MERGED\")\"
     trustExitCode = true
     keepBackup = false
 
@@ -48,8 +63,3 @@
     insteadOf=git@ssd-git-03.juniper.net/diag/
     insteadOf=git@ssd-git-03.juniper.net:diag/
 
-[user]
-    name = Xudong Huang
-    email = huangxu008@hotmail.com
-[push]
-    default = simple
