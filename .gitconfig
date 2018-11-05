@@ -6,6 +6,7 @@
     ignoreCygwinFSTricks = true
     excludesfile =  ~/.gitignore_global
     filemode = false
+    editor = vim
 [gui]
     recentrepo = D:/Data/project/common_tcmd_local
     fontui = -family \"MS Sans Serif\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0 [user]
@@ -28,7 +29,6 @@
     dfc = diff --no-ext-diff --cached
 [http]
     proxy = http://127.0.0.1:1080
-
 [diff]
     external = ~/bin/diff-wrapper.sh
     renames = true

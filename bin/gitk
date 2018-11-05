@@ -3,7 +3,7 @@
 uname=`uname -o`
 
 if [ $uname = "Cygwin" ]; then
-  ~/bin/m_exec gitk.cmd $@
+  ~/bin/m_exec gitk.exe $@
 else
   /usr/bin/gitk $@
 fi

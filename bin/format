@@ -7,7 +7,7 @@ do
       autopep8 -i $file
       chmod 755 $file
     elif [ ${file##*.} = "rs" ]; then
-      rustfmt $file
+      rustfmt --write-mode overwrite $file
       chmod 644 $file
     else
       ~/bin/m_exec uncrustify -c ~/bin/std.cfg --no-backup $file
